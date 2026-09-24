@@ -40,9 +40,26 @@ background-image:radial-gradient(ellipse 60% 40% at 10% 10%,rgba(139,123,255,.45
 .exp{margin-top:14px;padding:14px;border-radius:16px;background:var(--bd);font-size:14px;line-height:1.55}
 .btn{margin-top:18px;width:100%;padding:15px;border:0;border-radius:16px;background:var(--ac);color:#fff;font:inherit;font-size:16px;font-weight:600;cursor:pointer}
 .src{font-size:12px;color:var(--mu);margin-top:16px;line-height:1.5;text-align:center}
+
+/* Luzes de fundo: borboleta (topo esquerdo) e planeta neon (base direita) */
+.fxwrap{position:fixed;inset:0;max-width:440px;margin:0 auto;overflow:hidden;z-index:0;pointer-events:none}
+.fxwrap>*{position:absolute}
+.wing{border-radius:50%;background:radial-gradient(ellipse at center,rgba(20,20,80,0) 30%,rgba(214,150,255,.95) 52%,rgba(110,90,255,.7) 66%,rgba(60,80,255,0) 76%);filter:blur(7px)}
+.w1{top:-10px;left:-10px;width:150px;height:250px;transform:rotate(-38deg)}
+.w2{top:60px;left:-70px;width:120px;height:190px;transform:rotate(28deg);opacity:.8}
+.glow{top:40px;left:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(150,110,255,.45),transparent 70%);filter:blur(20px)}
+.planet{right:-120px;bottom:-100px;width:330px;height:330px;border-radius:50%;background:radial-gradient(circle at 28% 25%,#2a33a8,#0c1040 55%,#04061a);box-shadow:inset 10px 10px 34px #8f9bff,inset -24px -24px 60px #000,0 0 50px 6px rgba(120,100,255,.6),0 0 140px 30px rgba(70,110,255,.35)}
+.ring{right:-190px;bottom:-15px;width:520px;height:110px;border-radius:50%;border:3px solid rgba(170,150,255,.85);transform:rotate(-18deg);box-shadow:0 0 18px rgba(140,120,255,.9),inset 0 0 14px rgba(140,120,255,.6);filter:blur(.6px)}
+#app{position:relative;z-index:1}
+.cta{z-index:5}
+:root[data-theme="light"] .fxwrap{opacity:.3}
 </style>
 </head>
 <body>
+<div class="fxwrap" aria-hidden="true">
+  <i class="glow"></i><i class="wing w1"></i><i class="wing w2"></i>
+  <i class="planet"></i><i class="ring"></i>
+</div>
 <div id="app"></div>
 <script>
 const M=[
