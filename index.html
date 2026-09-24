@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Resinas Compostas • Evidências e Atualidades</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#070a1c;--tx:#fff;--mu:#a9aed6;--card:rgba(90,100,200,.22);--bd:rgba(255,255,255,.14);--ac:#8b7bff;--ok:#b6e388;--ok2:#4be0a0;--bad:#ff8fa3}
+:root[data-theme="light"]{--bg:#eef0ff;--tx:#141a3a;--mu:#5a6090;--card:rgba(255,255,255,.7);--bd:rgba(20,26,58,.12)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#eef0ff;--tx:#141a3a;--mu:#5a6090;--card:rgba(255,255,255,.7);--bd:rgba(20,26,58,.12)}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh;
+background-image:radial-gradient(ellipse 60% 40% at 10% 10%,rgba(139,123,255,.45),transparent),radial-gradient(ellipse 70% 40% at 100% 90%,rgba(80,110,255,.4),transparent);background-attachment:fixed}
+#app{max-width:440px;margin:0 auto;padding:16px 16px 110px;min-height:100vh}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:18px}
+.top h1{font-size:15px;font-weight:500;margin:0;text-align:center;flex:1}
+.ib{width:42px;height:42px;border-radius:14px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font-size:18px;cursor:pointer;backdrop-filter:blur(12px)}
+.hero{margin:6px 2px 22px}.hero h2{font-size:26px;margin:0 0 6px;line-height:1.15}.hero p{margin:0;color:var(--mu);font-size:14px;line-height:1.5}
+.bar{height:6px;border-radius:9px;background:var(--bd);overflow:hidden;margin-top:14px}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ac),var(--ok2));transition:width .4s}
+.path{position:relative}
+.node{position:relative;width:66%;min-height:128px;padding:16px;border-radius:26px;border:1px solid var(--bd);background:var(--card);backdrop-filter:blur(14px);cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;margin-bottom:34px;text-align:left;color:var(--tx);font:inherit}
+.node.r{margin-left:auto}
+.node.act{background:linear-gradient(160deg,rgba(139,123,255,.55),rgba(60,70,190,.35))}
+.node b{font-size:18px;font-weight:500;line-height:1.2}
+.pc{font-size:13px;color:var(--mu);display:flex;align-items:center;gap:7px}
+.pc:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.pc.z:before{background:var(--mu)}
+.go{position:absolute;right:12px;bottom:12px;width:38px;height:38px;border-radius:12px;background:#fff;color:#111;display:grid;place-items:center;font-size:17px}
+.node:not(:last-child):after{content:"";position:absolute;bottom:-34px;width:2px;height:34px;background:linear-gradient(var(--mu),transparent);opacity:.6}
+.node.r:not(:last-child):after{left:30%}.node:not(.r):not(:last-child):after{right:30%}
+.cta{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));width:min(408px,calc(100% - 32px));height:60px;border-radius:30px;border:1px solid var(--bd);background:rgba(10,14,40,.92);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 24px;font-size:17px;cursor:pointer;backdrop-filter:blur(14px)}
+.cta span{font-size:14px;color:#a9aed6}
+.panel{border-radius:26px;border:1px solid var(--bd);background:var(--card);backdrop-filter:blur(14px);padding:22px}
+.tag{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ac);font-weight:600}
+.panel h3{font-size:21px;margin:8px 0 10px;line-height:1.25}.panel p{margin:0;line-height:1.6;color:var(--tx);font-size:15.5px}
+.opt{display:block;width:100%;text-align:left;margin-top:10px;padding:14px 16px;border-radius:16px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit;font-size:15px;cursor:pointer}
+.opt.ok{border-color:var(--ok2);background:rgba(75,224,160,.18)}.opt.no{border-color:var(--bad);background:rgba(255,143,163,.16)}
+.exp{margin-top:14px;padding:14px;border-radius:16px;background:var(--bd);font-size:14px;line-height:1.55}
+.btn{margin-top:18px;width:100%;padding:15px;border:0;border-radius:16px;background:var(--ac);color:#fff;font:inherit;font-size:16px;font-weight:600;cursor:pointer}
+.src{font-size:12px;color:var(--mu);margin-top:16px;line-height:1.5;text-align:center}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const M=[
+{t:"Composição e Classificação",s:"Matriz, carga e silano",L:[
+["Os 3 componentes","Toda resina composta combina matriz orgânica (monômeros como Bis-GMA, UDMA e TEGDMA), partículas de carga inorgânica (sílica, vidros, zircônia) e o agente de união silano, que liga carga e matriz. A quantidade e o tamanho da carga definem desgaste, polimento e contração."],
+["Classificação por partículas","Microparticuladas polem muito bem, mas são menos resistentes. Híbridas são resistentes, porém com polimento inferior. As nanohíbridas e nanoparticuladas buscam equilíbrio entre estética e resistência e são hoje as mais usadas em restaurações anteriores e posteriores."]],
+Q:[["Qual componente une a carga inorgânica à matriz orgânica?",["Bis-GMA","Silano","Canforoquinona","Zircônia"],1,"O silano é o agente de união que faz a ligação química entre a carga e a matriz resinosa."],
+["Qual a principal vantagem das resinas nanohíbridas?",["Contração nula","Não precisam de fotoativação","Equilíbrio entre polimento e propriedades mecânicas","Não possuem matriz orgânica"],2,"Elas combinam bom polimento e resistência, por isso servem para muitas situações clínicas."]]},
+{t:"Contração e Estresse",s:"Fator C e bulk-fill",L:[
+["Contração de polimerização","Ao polimerizar, a resina contrai cerca de 2 a 3% em volume. Como está aderida às paredes, gera tensão na interface dente-restauração, com risco de microinfiltração, sensibilidade pós-operatória, fratura marginal e linhas brancas."],
+["Fator C e técnicas","O fator C é a razão entre superfícies aderidas e livres: quanto maior, mais estresse. A técnica incremental reduz esse fator. Resinas bulk-fill permitem incrementos de 4 a 5 mm e, em revisões de curto a médio prazo, mostram desempenho clínico semelhante ao das convencionais."]],
+Q:[["Uma cavidade classe I (oclusal) tem fator C:",["Alto, com muitas paredes aderidas","Baixo","Igual a zero","Depende só da cor"],0,"Com cinco paredes aderidas e pouca superfície livre, o estresse de contração tende a ser maior."],
+["Sobre as resinas bulk-fill, é correto dizer que:",["Eliminam totalmente a contração","Permitem incrementos maiores, com desempenho clínico comparável em estudos de médio prazo","Dispensam adesivo","Só servem para dentes anteriores"],1,"Elas simplificam a técnica, mas não eliminam contração nem a necessidade de adesão adequada."]]},
+{t:"Adesão ao Dente",s:"Esmalte, dentina e adesivos",L:[
+["Sistemas adesivos","Há os convencionais (condicionamento ácido total), os autocondicionantes e os universais, que podem ser usados em qualquer modo. O ácido fosfórico no esmalte segue como referência para uma adesão duradoura."],
+["O que a evidência sugere","Revisões indicam que o condicionamento seletivo do esmalte antes de adesivos universais melhora a retenção e reduz manchamento marginal, sobretudo em lesões cervicais não cariosas. Na dentina, evite ressecar: o colágeno colapsado prejudica a infiltração do adesivo."]],
+Q:[["Ao usar adesivo universal, o que melhora a adesão ao esmalte?",["Ressecar o esmalte","Condicionar com ácido fosfórico","Pular a fotoativação","Usar mais camadas de resina"],1,"O condicionamento ácido do esmalte aumenta a retenção micromecânica."],
+["Por que não ressecar demais a dentina condicionada?",["Escurece a resina","Colapsa as fibras colágenas e reduz a infiltração do adesivo","Aumenta o fator C","Inativa o silano"],1,"Manter a dentina levemente úmida preserva a rede colágena para o adesivo penetrar."]]},
+{t:"Fotoativação",s:"Energia, luz e técnica",L:[
+["Iniciadores e comprimento de onda","A canforoquinona absorve em torno de 470 nm (azul). Alguns materiais usam iniciadores alternativos, como TPO ou germânio, que absorvem em comprimentos menores (violeta) e pedem aparelhos LED de múltiplos picos (polywave)."],
+["Energia entregue","A energia (J/cm²) é a irradiância multiplicada pelo tempo. Ponta próxima e perpendicular, tempo conforme o fabricante e checagem periódica com radiômetro evitam polimerização insuficiente, que reduz propriedades e aumenta degradação. Proteja os olhos."]],
+Q:[["A energia de fotoativação é:",["Irradiância ÷ tempo","Irradiância × tempo","Só o tempo","Só a distância"],1,"Dobrar o tempo com a mesma irradiância dobra a energia, mas a técnica e a distância também importam."],
+["Por que usar LED polywave?",["Para aquecer a resina","Para ativar iniciadores que absorvem em comprimentos menores que o da canforoquinona","Para dispensar o adesivo","Para reduzir a carga"],1,"Só um LED de banda estreita em 470 nm pode não ativar bem iniciadores alternativos."]]},
+{t:"Atualidades e Longevidade",s:"Tendências e evidências",L:[
+["Tendências","Entre as novidades estão bulk-fill, resinas termoviscosas com pré-aquecimento, monômeros de menor contração, materiais bioativos ou com liberação de íons (com evidência clínica ainda limitada), blocos CAD/CAM em resina e resinas para impressão 3D. A redução do uso do amalgama (Convenção de Minamata) também impulsiona a resina."],
+["Longevidade clínica","Revisões de restaurações posteriores em resina relatam taxas anuais de falha na faixa de 1 a 3%. As causas mais comuns são cárie secundária e fratura. Risco de cárie, bruxismo e técnica do operador pesam tanto quanto a marca do material."]],
+Q:[["As principais causas de falha a longo prazo em restaurações de resina são:",["Cor e brilho","Cárie secundária e fratura","Excesso de polimento","Uso de silano"],1,"Esses são os motivos mais relatados nas revisões clínicas."],
+["Sobre resinas bioativas, o mais adequado é dizer que:",["Já substituem todas as demais","São promissoras, mas com evidência clínica de longo prazo ainda limitada","Não liberam nada","São proibidas"],1,"É preciso cautela: propriedades laboratoriais nem sempre se traduzem em benefício clínico."]]}
+];
+let P={},tab="map",cur=0,ans=null;
+try{P=JSON.parse(localStorage.getItem("resinP")||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem("resinP",JSON.stringify(P))}catch(e){}};
+const tot=m=>m.L.length+m.Q.length, pct=i=>Math.round(100*(P[i]||0)/tot(M[i]));
+const nextIdx=()=>{let i=M.findIndex((m,k)=>pct(k)<100);return i<0?0:i};
+const $=document.getElementById("app");
+function map(){
+ const all=Math.round(M.reduce((a,_,i)=>a+pct(i),0)/M.length),n=nextIdx();
+ $.innerHTML=`<div class="top"><button class="ib" onclick="if(confirm('Zerar progresso?')){P={};save();map()}">↺</button><h1>Trilha de estudo</h1><button class="ib" onclick="document.documentElement.dataset.theme=document.documentElement.dataset.theme=='light'?'dark':'light'">◐</button></div>
+ <div class="hero"><h2>Resinas Compostas</h2><p>Evidências e atualidades para a prática clínica. Progresso geral: ${all}%</p><div class="bar"><i style="width:${all}%"></i></div></div>
+ <div class="path">${M.map((m,i)=>`<button class="node ${i%2?'':'r'} ${i==n?'act':''}" onclick="open_(${i})"><b>${m.t}</b><span class="pc ${pct(i)?'':'z'}">${pct(i)}%</span>${i==n?'<span class="go">↗</span>':''}</button>`).join("")}</div>
+ <div class="src">Conteúdo educativo resumido. Consulte revisões sistemáticas e as instruções do fabricante antes de aplicar na clínica.</div>
+ <button class="cta" onclick="open_(${n})">Continuar <span>módulo ${n+1}</span></button>`;
+}
+function open_(i){cur=i;ans=null;if(pct(i)>=100)P[i]=0;view()}
+function view(){
+ const m=M[cur],s=P[cur]||0;let body;
+ if(s<m.L.length){const l=m.L[s];body=`<div class="tag">Aula ${s+1} de ${m.L.length}</div><h3>${l[0]}</h3><p>${l[1]}</p><button class="btn" onclick="step()">Próximo</button>`}
+ else{const q=m.Q[s-m.L.length];body=`<div class="tag">Quiz ${s-m.L.length+1} de ${m.Q.length}</div><h3>${q[0]}</h3>`+q[1].map((o,k)=>`<button class="opt ${ans==null?'':k==q[2]?'ok':k==ans?'no':''}" ${ans==null?`onclick="pick(${k})"`:''}>${o}</button>`).join("")+(ans==null?"":`<div class="exp">${ans==q[2]?"Correto! ":"Não foi dessa vez. "}${q[3]}</div><button class="btn" onclick="step()">${s+1>=tot(m)?'Concluir':'Próximo'}</button>`)}
+ $.innerHTML=`<div class="top"><button class="ib" onclick="map()">←</button><h1>Módulo ${cur+1}: ${m.t}</h1><span style="width:42px"></span></div><div class="bar" style="margin:0 0 18px"><i style="width:${100*s/tot(m)}%"></i></div><div class="panel">${body}</div>`;
+}
+function pick(k){ans=k;view()}
+function step(){P[cur]=(P[cur]||0)+1;ans=null;save();P[cur]>=tot(M[cur])?map():view()}
+map();
+</script>
+</body>
+</html>
